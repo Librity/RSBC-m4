@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import TechItem from './TechItem';
+
 import profile from '../assets/myAvatar.png';
 
 class TechList extends Component {
@@ -38,12 +40,11 @@ class TechList extends Component {
         <form onSubmit={this.handleSubmit}>
           <ul>
             {this.state.techs.map(tech => (
-              <li key={tech}>
-                {tech + '   '}
-                <button onClick={() => this.handleRemove(tech)} type="button">
-                  Remove
-                </button>
-              </li>
+              <TechItem
+                key={tech}
+                tech={tech}
+                onRemove={() => this.handleRemove(tech)}
+              />
             ))}
           </ul>
           <input
