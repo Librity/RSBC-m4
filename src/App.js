@@ -1,8 +1,10 @@
-import React from "react";
+import React from 'react';
 import './App.css';
 
-const App=()=>{
-  return <h1>!!!Howdy Partner!!!🤠</h1>
-}
+import TechList from './components/TechList';
+
+const App = () => {
+  return <TechList />;
+};
 
 export default App;
