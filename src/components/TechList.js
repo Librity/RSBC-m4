@@ -7,7 +7,28 @@ import profile from '../assets/myAvatar.png';
 class TechList extends Component {
   state = {
     newTech: '',
-    techs: ['Node.js', 'ReactJS', 'React Native'],
+    techs: [],
+  };
+
+  // Runs before the component is added in the DOM (mounted).
+  componentWillMount = () => {};
+  // Runs when the component is added in the DOM (mounted).
+  componentDidMount = () => {
+    const techs = localStorage.getItem('techs');
+
+    if (techs) {
+      this.setState({ techs: JSON.parse(techs) });
+    }
+  };
+  // Runs every time (the component's) this.props or this.state change.
+  componentDidUpdate = (_, prevState) => {
+    if (prevState.techs !== this.state.techs) {
+      localStorage.setItem('techs', JSON.stringify(this.state.techs));
+    }
+  };
+  // Runs before the component is removed from the DOM (unmounted).
+  componentWillUnmount = () => {
+    // Good for killing the eventListener & anything else that needs to stop running
   };
 
   handleInputChange = e => {
